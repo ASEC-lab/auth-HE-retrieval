@@ -14,15 +14,27 @@ The software in this reporistory is licensed under the MIT license. See the LICE
 
 - If you are using an AWS bucket with a different name or region, update accordingly in Servers\_Protocol.h.
 
-- Build the image using the provided Dockerfile on each of the machines. Alternatively it is possible to build on one machine, save the image to a file, copy to the other machines and load from there. 
+- Build the image using the provided Dockerfile on each of the machines. Alternatively it is possible to build on one machine, save the image to a file, copy to the other machines and load from there.
+
+To build the docker image, make sure you are in the folder that contains the dockerfile and then use the command: 
+```PowerShell
+docker build -t authHE .
+```
 
 # Running the containers:
 
 - Run the container using the command: 
 ```PowerShell
-docker run -it \<dockername\>
+docker run -it authHE
 ```
 - After running the container on each machine, add your aws credentials for accessing the S3 bucket (access key and secret key) to ~/.aws/credentials
+The credentials file should have the following structure:
+```PowerShell
+[default]
+aws_access_key_id = \<key_id\>
+aws_secret_access_key = \<secret_access_key\>
+```
+where the key id and secret access key values should be created by your AWS account.
 
 ## On Data Producer instance:
 

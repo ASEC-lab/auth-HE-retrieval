@@ -60,7 +60,7 @@ Type the following commands to run a basic MAC test:
 
 ```bash
 make Test_Protocol
-./Test_Protocol -i 16384 -e ../tests_enc_params/params_20bp_16k_unbatched
+./Test_Protocol -i 16384 -e ../tests_enc_params/params_15bp_16k_batched
 ```
 You should see a "Done" message printed at the end of the test. This indicates that the test passed successfully.
 
@@ -90,22 +90,24 @@ Run the docker on all instances.
 
 On the data producer instance type:
 ```bash
-/Data_Owner -i 2031616 --enc_param_file ../tests_enc_params/params_18bp_32k_unbatched
+./Data_Owner -i 2031616 --enc_param_file ../tests_enc_params/params_18bp_32k_unbatched
 ```
+A successful run of the data producer should print messages stating that objects have been added to the bucket. Once completed, it should print "Done".
 
-On the data keeper instance type:
+Once the data producer instance has completed running, on the data keeper instance type:
 ```bash
-./Auxiliary_Server -i 2031616 --enc_param_file ../tests_enc_params/params_18bp_32k_unbatcehd
+./Auxiliary_Server -i 2031616 --enc_param_file ../tests_enc_params/params_18bp_32k_unbatched
 ```
+Once loaded, the data keeper should print a message stating that the server is listening on port 8080.
 
-On the data consumer instance type:
+Once the data keeper instance has loaded, on the data consumer instance type:
 ```bash
-./Destination_Server -i 2031616 --ip 127.0.0.1 --enc_param_file ../tests_enc_params/params_18bp_32k_unbatcehd
+./Destination_Server -i 2031616 --ip 127.0.0.1 --enc_param_file ../tests_enc_params/params_18bp_32k_unbatched
 ```
 Replace 127.0.0.1 with the IP of the data keeper instance.
 
 A successful run should print confirmation that the Secret share and MAC checks passed successfully.
-Also, you will find the time measurements in /tmp/out folder
+Also, you will find the time measurements in /tmp/out folder of each entity. Time units are microseconds.
 
 #### Experiment 2: Run the *batched* flow for 2031616 data points using 32k poly modulus degree
 In this experiment, the data producer will generate 2031616 data points, create the secret share and batched MAC values and upload them to the AWS bucket.
@@ -116,22 +118,24 @@ Run the docker on all instances.
 
 On the data producer instance type:
 ```bash
-/Data_Owner -i 2031616 --enc_param_file ../tests_enc_params/params_12bp_32k_batched --batched
+./Data_Owner -i 2031616 --enc_param_file ../tests_enc_params/params_12bp_32k_batched --batched
 ```
+A successful run of the data producer should print messages stating that objects have been added to the bucket. Once completed, it should print "Done".
 
-On the data keeper instance type:
+Once the data producer instance has completed running, on the data keeper instance type:
 ```bash
 ./Auxiliary_Server -i 2031616 --enc_param_file ../tests_enc_params/params_12bp_32k_batched --batched
 ```
+Once loaded, the data keeper should print a message stating that the server is listening on port 8080.
 
-On the data consumer instance type:
+Once the data keeper instance has loaded, on the data consumer instance type:
 ```bash
 ./Destination_Server -i 2031616 --ip 127.0.0.1 --enc_param_file ../tests_enc_params/params_12bp_32k_batched --batched
 ```
 Replace 127.0.0.1 with the IP of the data keeper instance.
 
-A successful run should print confirmation that the Secret share and MAC checks passed successfully.
-Also, you will find the time measurements in /tmp/out folder
+A successful run of the data consumer should print confirmation that the Secret share and MAC checks passed successfully.
+Also, you will find the time measurements in /tmp/out folder of each entity. Time units are microseconds.
 
 ## Limitations (Only for Functional and Reproduced badges) 
 The provided software covers the SEAL based implementation and functionality of the 3 entities, as described in section 5 of the article. 
