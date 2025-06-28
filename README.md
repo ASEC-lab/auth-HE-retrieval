@@ -28,7 +28,7 @@ docker build -t authhe .
 docker run -it authhe
 ```
 
-Note that on the data keepr container, port 8080 needs to be open for communication with the data consumer.
+Note that on the data keeper container, port 8080 needs to be open for communication with the data consumer.
 Therefore, for the data keeper instance use the following command to run the docker:
 ```PowerShell
 docker run -p 8080 -it authhe
