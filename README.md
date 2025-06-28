@@ -18,15 +18,22 @@ The software in this reporistory is licensed under the MIT license. See the LICE
 
 To build the docker image, make sure you are in the folder that contains the dockerfile and then use the command: 
 ```PowerShell
-docker build -t authHE .
+docker build -t authhe .
 ```
 
 # Running the containers:
 
 - Run the container using the command: 
 ```PowerShell
-docker run -it authHE
+docker run -it authhe
 ```
+
+Note that on the data keepr container, port 8080 needs to be open for communication with the data consumer.
+Therefore, for the data keeper instance use the following command to run the docker:
+```PowerShell
+docker run -p 8080 -it authhe
+```
+
 - After running the container on each machine, add your aws credentials for accessing the S3 bucket (access key and secret key) to ~/.aws/credentials
 The credentials file should have the following structure:
 ```PowerShell
@@ -36,16 +43,25 @@ aws_secret_access_key = \<secret_access_key\>
 ```
 where the key id and secret access key values should be created by your AWS account.
 
+# Batched vs. Unbatched Mode
+The system supports both batched and unbatched operational modes, as outlined in the referenced publication. These modes are mutually exclusive and currently not interoperable. 
+Consequently, if the data producer generates data in unbatched mode, the data keeper and data consumer instances must also be configured to operate in unbatched mode. 
+Similarly, data generated in batched mode mandates that both the data keeper and consumer operate in batched mode to ensure protocol compatibility.
+
+# Running the instances
+
+The following decribes the commands required for activation of each instance.
+
 ## On Data Producer instance:
 
 - Type ```./Data_Owner -h``` to see all options for running the data producer instance.
 
 Recommended commands:
-- For generating 98304 data points in unbatched mode run:
+- For generating 98304 data points in **unbatched** mode run:
 ```PowerShell
 ./Data_Owner -i 98304 --enc_param_file ../tests_enc_params/params_18bp_32k_unbatched 
 ```
-- For generating 98304 data points in the batched mode run:
+- For generating 98304 data points in the **batched** mode run:
 ```PowerShell
 ./Data_Owner -i 98304 --enc_param_file ../tests_enc_params/params_12bp_32k_batched --batched
 ```
@@ -57,13 +73,13 @@ Recommended commands:
 - Type ```./Auxiliary_Server -h``` to see all options for running the data keeper instance.
 
 Recommended commands:
-- For launching the server to transfer 98304 data points in unbatched mode run:
+- For launching the server to transfer 98304 data points in **unbatched** mode run:
 ```PowerShell
-./Auxiliary_Server -i 98304 --enc_param_file ../tests_enc_params/params_18bp_32k_unbatcehd
+./Auxiliary_Server -i 98304 --enc_param_file ../tests_enc_params/params_18bp_32k_unbatched
 ```
-- For launching the server to transfer 98304 data points in batched mode run:
+- For launching the server to transfer 98304 data points in **batched** mode run:
 ```PowerShell
-./Data_Owner -i 98304 --enc_param_file ../tests_enc_params/params_12bp_32k_batched --batched
+./Auxiliary_Server -i 98304 --enc_param_file ../tests_enc_params/params_12bp_32k_batched --batched
 ```
 - You will see that the server is listening on port 8080
 
@@ -73,11 +89,11 @@ Recommended commands:
 - Type ```./Destination_Server -h``` to see all options for running the data consumer instance.
 
 Recommended commands:
-- For consuming 98304 data points in unbatched mode run:
+- For consuming 98304 data points in **unbatched** mode run:
 ```PowerShell
-./Destination_Server -i 98304 --ip 127.0.0.1 --enc_param_file ../tests_enc_params/params_18bp_32k_unbatcehd
+./Destination_Server -i 98304 --ip 127.0.0.1 --enc_param_file ../tests_enc_params/params_18bp_32k_unbatched
 ```
-- For consuming 98304 data points in batched mode run:
+- For consuming 98304 data points in **batched** mode run:
 ```PowerShell
 ./Destination_Server -i 98304 --ip 127.0.0.1 --enc_param_file ../tests_enc_params/params_12bp_32k_batched --batched
 ```
