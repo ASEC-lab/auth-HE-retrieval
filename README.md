@@ -103,3 +103,32 @@ When the transfer completes you should see prints confirming that the Secret sha
 
 ## Time Measurements
 The time measurements in csv format can be found under the /tmp/out folder on each instance. The time measurements values are in microseconds.
+
+## Code Contributors
+
+- Adi Akavia, email: [adi.akavia@gmail.com](mailto://adi.akavia@gmail.com) 
+- Meir Goldenberg, email: [meirgold@hotmail.com](mailto://meirgold@hotmail.com)
+- Neta Oren, email: [neta5128@gmail.com](mailto://neta5128@gmail.com)
+- Margarita Vald, email: [margarita_vald@intuit.com](mailto://margarita_vald@intuit.com)
+ 
+
+## Citation
+
+If you use this code or find it helpful in your research, please cite the following paper:
+
+A. Akavia, M. Goldenberg, N. Oren and M. Vald.
+**Message Authentication Code with Fast Verification over Encrypted Data and Applications**  
+*PoPETs 2025.4*  
+<!--
+[DOI]
+
+BibTeX:
+```bibtex
+@inproceedings{yourbibkey2025,
+  title     = {Message Authentication Code with Fast Verification over Encrypted Data and Applications},
+  author    = {Your Name and Coauthor Name and ...},
+  booktitle = {Proceedings of ...},
+  year      = {2025},
+  url       = {https://your-link.com},
+}
+-->
