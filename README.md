@@ -117,8 +117,8 @@ The time measurements in csv format can be found under the /tmp/out folder on ea
 If you use this code or find it helpful in your research, please cite the following paper:
 
 A. Akavia, M. Goldenberg, N. Oren and M. Vald.
-**Message Authentication Code with Fast Verification over Encrypted Data and Applications**  
-*PoPETs 2025.4*  
+**Message Authentication Code with Fast Verification over Encrypted Data and Applications.**  
+*PoPETs 2025.4, pages 1092–1111. https://doi.org/10.56553/popets-2025-0173* 
 <!--
 [DOI]
 
