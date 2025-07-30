@@ -111,6 +111,8 @@ The time measurements in csv format can be found under the /tmp/out folder on ea
 - Neta Oren, email: [neta5128@gmail.com](mailto://neta5128@gmail.com)
 - Margarita Vald, email: [margarita_vald@intuit.com](mailto://margarita_vald@intuit.com)
  
+## Presentation Video
+A video of the article presentation at PoPETs 2025 is available under this [link](https://drive.google.com/file/d/1NARYzm_0MN1ioQAZrmqnyGpq2GgbevPY/view?usp=sharing)
 
 ## Citation
 
@@ -121,9 +123,6 @@ A. Akavia, M. Goldenberg, N. Oren and M. Vald.
 *PoPETs 2025.4, pages 1092–1111. https://doi.org/10.56553/popets-2025-0173* 
 <!--
 [DOI]
-
-## Presentation Video
-A video of the article presentation at PoPETs 2025 is available under this [link](https://drive.google.com/file/d/1NARYzm_0MN1ioQAZrmqnyGpq2GgbevPY/view?usp=sharing)
 
 BibTeX:
 ```bibtex
