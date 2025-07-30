@@ -122,6 +122,9 @@ A. Akavia, M. Goldenberg, N. Oren and M. Vald.
 <!--
 [DOI]
 
+## Presentation Video
+A video of the article presentation at PoPETs 2025 is available under this [link](https://drive.google.com/file/d/1NARYzm_0MN1ioQAZrmqnyGpq2GgbevPY/view?usp=sharing)
+
 BibTeX:
 ```bibtex
 @inproceedings{yourbibkey2025,
